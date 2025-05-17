@@ -43,66 +43,8 @@ display the character's attributes in a creative and humorous way.
 
 // select the paragragh named characterDescription
 let element = document.querySelector('#characterDescription');
-let characterFirstName = ["John","Jane","Peter","Mary"];
-let characterLastName = ["Doe","Smith","Parker","Johnson"];
-let age = 25;
+let characterName = ["John","Jane","Peter","Mary"];
+let age = Math.floor(Math.random() * 100) + 1; // Random age between 1 and 100
 let isSuperhero =  true;
 let specialPowers = ["Invisibility", "Super Strength", "Flying"];
 let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
-
-// make variables to  hold the current name and age
-let currentName = "John Doe";
-let currentAge = 25;
-
-// ------------ Function to generate a random character description
-
-// (array) is the parameter passed to the function
-function randomEntry(array){
-// Math.random() generates a random number between 0 and 1
-const randomIndex = Math.floor(Math.random() * array.length);
-// retrun a random index from the array
-return array[randomIndex];
-}
-
-// Function to generate a random character name
-function generateRandomName() {
-    // Generate a random first and last name
-    const firstName = randomEntry(characterFirstName);
-    const lastName = randomEntry(characterLastName);
-    return `${firstName} ${lastName}`;
-}
-// Function for a random age
-function makeRandomAge() {
-    // math.floor() rounds down to the nearest whole number
-    // Math.random() generates a random number between 0 and 1
-    const randomAge = Math.floor(Math.random() * 100) + 1;
-
-    return randomAge;
-}
-// build the character description
-function buildCharacterDescription() {
-    // make variables inside the function to hold the values made by the functions
-    let characterName = generateRandomName();
-    let age = makeRandomAge();
-
-
-    // Create a character description using string manipulation from lesson 2 week 2
-    const description = `Meet ${currentName}, a ${currentAge}-year-old ${
-        isSuperhero ? "superhero" : "ordinary person"
-    } who loves ${favoriteFood.join(", ")}. Their special powers include ${specialPowers.join(", ")}.`;
-    return description;
-}
-
-
-// Functions to update character's age
-
-
-// Function to update the character's description after changing age
-
-
-// Add event listeners for buttons using querySelector
-// grab the button from the html document
-const generateButton = document.getElementById("generateButton");
-generateButton.addEventListener("click", function () {
-    output.textContent = buildCharacterDescription();
-});
