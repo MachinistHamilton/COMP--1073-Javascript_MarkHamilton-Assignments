@@ -41,6 +41,10 @@ display the character's attributes in a creative and humorous way.
 •	favoriteFood (string)
 */
 
+// select the paragragh named characterDescription
+let output = document.querySelector('#characterDescription');
+
+
 
 let characterFirstName = ["John","Jane","Peter","Mary"];
 let characterLastName = ["Doe","Smith","Parker","Johnson"];
@@ -50,11 +54,8 @@ let specialPowers = ["Invisibility", "Super Strength", "Flying"];
 let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
 
 
-// select the paragragh named characterDescription
-let element = document.querySelector('#characterDescription');
+// ------------ Function to generate a random character description
 
-
-// Function to generate a random character description
 // (array) is the parameter passed to the function
 function randomEntry(array){
 // Math.random() generates a random number between 0 and 1
@@ -63,10 +64,32 @@ const randomIndex = Math.floor(Math.random() * array.length);
 return array[randomIndex];
 }
 
+// Function to generate a random character name
+function generateRandomName() {
+    // Generate a random first and last name
+    const firstName = randomEntry(characterFirstName);
+    const lastName = randomEntry(characterLastName);
+    return `${firstName} ${lastName}`;
+}
+// Function for a random age
+function makeRandomAge() {
+    // math.floor() rounds down to the nearest whole number
+    // Math.random() generates a random number between 0 and 1
+    const randomAge = Math.floor(Math.random() * 100) + 1;
+
+    return randomAge;
+}
+// build the character description
+function buildCharacterDescription() {
+    // Create a character description using string manipulation from lesson 2 week 2
+    const description = `Meet ${characterName}, a ${age}-year-old ${
+        isSuperhero ? "superhero" : "ordinary person"
+    } who loves ${favoriteFood.join(", ")}. Their special powers include ${specialPowers.join(", ")}.`;
+    return description;
+}
+
 
 // Functions to update character's age
-
-
 
 
 // Function to update the character's description after changing age
