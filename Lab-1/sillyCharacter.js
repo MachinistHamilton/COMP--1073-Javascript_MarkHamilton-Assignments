@@ -43,9 +43,6 @@ display the character's attributes in a creative and humorous way.
 
 // select the paragragh named characterDescription
 let element = document.querySelector('#characterDescription');
-
-
-let characterName = "John Doe";
 let characterFirstName = ["John","Jane","Peter","Mary"];
 let characterLastName = ["Doe","Smith","Parker","Johnson"];
 let age = 25;
@@ -81,6 +78,11 @@ function makeRandomAge() {
 }
 // build the character description
 function buildCharacterDescription() {
+    // make variables inside the function to hold the values made by the functions
+    let characterName = generateRandomName();
+    let age = makeRandomAge();
+
+
     // Create a character description using string manipulation from lesson 2 week 2
     const description = `Meet ${characterName}, a ${age}-year-old ${
         isSuperhero ? "superhero" : "ordinary person"
