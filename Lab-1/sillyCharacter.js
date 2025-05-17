@@ -33,6 +33,27 @@ display the character's attributes in a creative and humorous way.
 */
 
 // Declare and initialize variables
+/*•	Create variables to store character attributes:
+•	characterName (string)
+•	age (number)
+•	isSuperhero (boolean)
+•	specialPowers (array)
+•	favoriteFood (string)
+*/
+
+
+let characterFirstName = ["John","Jane","Peter","Mary"];
+let characterLastName = ["Doe","Smith","Parker","Johnson"];
+let age = 25;
+let isSuperhero =  true;
+let specialPowers = ["Invisibility", "Super Strength", "Flying"];
+let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
+
+
+// select the paragragh named characterDescription
+let element = document.querySelector('#characterDescription');
+
+
 
 
 
