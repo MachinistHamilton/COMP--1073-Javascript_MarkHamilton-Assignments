@@ -42,7 +42,7 @@ display the character's attributes in a creative and humorous way.
 */
 
 // select the paragragh named characterDescription
-let output = document.querySelector('#characterDescription');
+let element = document.querySelector('#characterDescription');
 
 
 
@@ -96,4 +96,8 @@ function buildCharacterDescription() {
 
 
 // Add event listeners for buttons using querySelector
-
+// grab the button from the html document
+const generateButton = document.getElementById("generateButton");
+generateButton.addEventListener("click", function () {
+    output.textContent = buildCharacterDescription();
+});
