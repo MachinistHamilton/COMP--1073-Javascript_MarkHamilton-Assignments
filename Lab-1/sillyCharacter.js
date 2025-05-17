@@ -50,6 +50,9 @@ let isSuperhero =  true;
 let specialPowers = ["Invisibility", "Super Strength", "Flying"];
 let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
 
+// make variables to  hold the current name and age
+let currentName = "John Doe";
+let currentAge = 25;
 
 // ------------ Function to generate a random character description
 
@@ -84,7 +87,7 @@ function buildCharacterDescription() {
 
 
     // Create a character description using string manipulation from lesson 2 week 2
-    const description = `Meet ${characterName}, a ${age}-year-old ${
+    const description = `Meet ${currentName}, a ${currentAge}-year-old ${
         isSuperhero ? "superhero" : "ordinary person"
     } who loves ${favoriteFood.join(", ")}. Their special powers include ${specialPowers.join(", ")}.`;
     return description;
