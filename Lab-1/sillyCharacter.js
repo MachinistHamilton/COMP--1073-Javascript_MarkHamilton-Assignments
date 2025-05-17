@@ -45,7 +45,7 @@ display the character's attributes in a creative and humorous way.
 let element = document.querySelector('#characterDescription');
 
 
-
+let characterName = "John Doe";
 let characterFirstName = ["John","Jane","Peter","Mary"];
 let characterLastName = ["Doe","Smith","Parker","Johnson"];
 let age = 25;
