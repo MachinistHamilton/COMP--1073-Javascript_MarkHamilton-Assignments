@@ -9,6 +9,8 @@ let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
 let genButton = document.querySelector('#generateButton');
 genButton.addEventListener('click', updateDescription);
 
+let increaseAgeButton = document.querySelector('#increaseAgeButton');
+increaseAgeButton.addEventListener('click', increaseAge);
 
 // Function to generate a random character description
 function generateCharacterDescription() {
@@ -24,4 +26,10 @@ function generateCharacterDescription() {
 function updateDescription() {
     generateCharacterDescription();
     output.textContent = newDescription;
+}
+
+// Function to increment up age when increaseAge button is clicked , and then update the description
+function increaseAge() {
+    age++;
+    updateDescription();
 }
