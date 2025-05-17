@@ -6,11 +6,24 @@ let isSuperhero =  true;
 let specialPowers = ["Invisibility", "Super Strength", "Flying"];
 let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
 
+// creatre a variable 'genButton' to use with jquerySelector
+// to select the button with id 'generateButton'
+// and add an event listener to it that listens for a click event
 let genButton = document.querySelector('#generateButton');
 genButton.addEventListener('click', updateDescription);
 
+// Create a variable 'resetButton' to use with jquerySelector
+// to select the button with id 'increaseAgeButton'
+// Listen for the increaseAge button click event
 let increaseAgeButton = document.querySelector('#increaseAgeButton');
 increaseAgeButton.addEventListener('click', increaseAge);
+
+// Create a variable 'resetButton' to use with jquerySelector
+// to select the button with id 'increaseButton'
+// Listen for the decreaseAge button click event
+let decreaseAgeButton = document.querySelector('#decreaseAgeButton');
+decreaseAgeButton.addEventListener('click', decreaseAge);
+
 
 // Function to generate a random character description
 function generateCharacterDescription() {
@@ -31,5 +44,11 @@ function updateDescription() {
 // Function to increment up age when increaseAge button is clicked , and then update the description
 function increaseAge() {
     age++;
+    updateDescription();
+}
+
+// Function to increment up age when increaseAge button is clicked , and then update the description
+function decreaseAge() {
+    age--;
     updateDescription();
 }
