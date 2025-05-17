@@ -54,10 +54,14 @@ let favoriteFood = ["Pizza", "Ice Cream", "HamBurgers", "Tacos"];
 let element = document.querySelector('#characterDescription');
 
 
-
-
-
 // Function to generate a random character description
+// (array) is the parameter passed to the function
+function randomEntry(array){
+// Math.random() generates a random number between 0 and 1
+const randomIndex = Math.floor(Math.random() * array.length);
+// retrun a random index from the array
+return array[randomIndex];
+}
 
 
 // Functions to update character's age
