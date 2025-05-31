@@ -8,12 +8,12 @@
 
 // variable named "customName" for the name field, uses getElementById to grab the 
 // input element with id "customname"
-var customName = document.querySelector('customname');
+var customName = document.querySelector('#customname'); // # to select id
 // variable with name "randomize" for the button, uses getElementById to 
 // grab the button element with id "randomize"
-var randomize = document.querySelector('randomize');
+var randomize = document.querySelector('.randomize'); // . to select class
 // variable with name "story" for the paragraph that outputs the final story
-var story = document.querySelector('story');
+var story = document.querySelector('.story'); // . to slect class
 
 /* STEP 3: Create the variable that contains the story string that will be modified 
 - use var storyText to containt the following:
