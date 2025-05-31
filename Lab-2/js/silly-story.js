@@ -12,7 +12,8 @@ var customName = document.getElementById('customname');
 // variable with name "randomize" for the button, uses getElementById to 
 // grab the button element with id "randomize"
 var randomize = document.getElementById('randomize');
-
+// variable with name "story" for the paragraph that outputs the final story
+var story = document.getElementById('story');
 
 /* STEP 3: Create the variable that contains the story string that will be modified 
 - use var storyText to containt the following:
@@ -41,7 +42,7 @@ var insertZ = ['spontaneously combusted', 'rapidly sublimated', 'evaporated inst
 /* STEP 2: have a look at the following function - if you call 
 this function and pass it an array, it will return one of the elements of that array randomly */
 function randomValueFromArray(array){
-	return array[Math.floor(Math.random()*array.length)];
+	return array[Math.floor(Math.random() * array.length)];
 }
 
 /* STEP 6: Review the partially complete result() function below */
@@ -52,82 +53,47 @@ function result() {
 
 	/* STEP 8: Use the randomValueFromArray() function to generate a value for each of three new variables - xItem, yItem, and zItem
 	Call up the function and for each variable, pass it the array from which to grab a random string - for example if insertW was an array of strings, I would type:
-	var wItem = randomValueFromArray(insertW);*/
+	var wItem = randomValueFromArray(insertW); */
 	var xItem = randomValueFromArray(insertX);
 	var yItem = randomValueFromArray(insertY);
 	var zItem = randomValueFromArray(insertZ);
 
-
-
 	/* STEP 9: Replace the three placeholders in the newStory string — :insertx:, :inserty:, and :insertz: — with the strings stored in xItem, yItem, and zItem. Each time, be sure to update the variable newStory (with +=). You might need to do one of the above replacements twice! */
 
 	// The replace() method is used to replace the first occurrence of a specified value in a string with another value.
-	// So newStory will be updated with the values of xItem, yItem, and zItem
 	// /g is a regular expression flag that stands for "global," meaning it will replace all occurrences of the specified value in the string.
 	newStory = newStory.replace(/:insertx:/g, xItem);
 	newStory = newStory.replace(/:inserty:/g, yItem);
 	newStory = newStory.replace(/:insertz:/g, zItem);
 
-
 	/* STEP 10: If the user has typed a name in the customName field, replace the name 'Bob' in the story with whatever they typed */
-	if(customName.value != '') {
+	if(customName.value !== '') {
 		var name = customName.value; // Get the value from the customName input field and make name variable set to it.
 		newStory = newStory.replace(/Bob/g, name); // Replace 'Bob' in the story with the name variable
 	}
 
 	/* STEP 11: If the metric radio button has been checked, we need to convert the temperature and mass numbers in the story */
-  if(document.getElementById("metric").checked) {
-		
-	// STEP 11a: Create a variable called weight and convert the 300lbs to kgs (1lb = 0.453592kg)
-		var weight = Math.round(300 * 0.453592); // Convert 300 pounds to kilograms with math.round to round to the nearest whole number
-		
+	if(document.getElementById("metric").checked) {
+		// STEP 11a: Create a variable called weight and convert the 300lbs to kgs (1lb = 0.453592kg)
+		var weight = Math.round(300 * 0.453592); // Convert 300 pounds to kilograms
 		// STEP 11b: Replace the string 300 pounds with the updated weight in kg
-		newStory = newStory.replace(/300 pounds/g, weight + ' kilograms');   // using replace() method to replace '300 pounds' with the weight variable
-		
-		
+		newStory = newStory.replace(/300 pounds/g, weight + ' kilograms');
+
 		// STEP 12a: Create a variable called temp and convert °F to °C ... the formula for conversion is °C = (°F - 32) x 5/9
-		var temp = Math.round((94 - 32) * 5/9);     // Convert 94°F to Celsius with math.round to round to the nearest whole number
-		
+		var temp = Math.round((94 - 32) * 5/9); // Convert 94°F to Celsius
 		// STEP 12b: Replace the string '94 fahrenheit' with the updated temperature in °C
 		newStory = newStory.replace(/94 fahrenheit/g, temp + ' centigrade');
+	}
 
-  }
 	/* STEP 13: Make the textContent property of the story variable (which references the paragraph) equal to newStory */
 	story.textContent = newStory;
 
-
 	// The following line makes the paragraph visible
 	story.style.visibility = 'visible';
-
+}
 
 // EVENT LISTENERS
 /* STEP 5: Add a click event listener to the randomize variable so that when the button it represents is clicked, the result() function is run. */
-//  EVENT LISTENER AND PARTIAL FUNCTION DEFINITION FROM MDN FOLLOW ALONG
-// https://github.com/mdn/learning-area/blob/main/javascript/introduction-to-js-1/assessment-start/raw-text.txt
-
-
-	if(customName.value !== '') {
-		var name = customName.value;
-		newStory = newStory.replace(/Bob/g, name); // Replace 'Bob' in the story with the name variable
-
-	}
-
-	if(document.getElementById("imperial").checked) {
-		// If the imperial radio button is checked, convert the weight and temperature to imperial units
-   		var weight = Math.round(300);
-		// replace() method
-		newStory = newStory.replace(/300 kilograms/g, weight + ' pounds'); // Replace '300 kilograms' with the weight variable
-		// Convert the temperature from Celsius to Fahrenheit
-		var temperature =  Math.round(94);
-		//replace() method
-		newStory = newStory.replace(/94 centigrade/g, temperature + ' fahrenheit'); // Replace '94 centigrade' with the temperature variable
-	}
-
-	story.textContent = "";
-	story.style.visibility = 'visible';
-}
 randomize.addEventListener('click', result);
 
 // This lab based on the excellent assessment challenge at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Silly_story_generator
-
-
