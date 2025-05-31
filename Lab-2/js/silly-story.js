@@ -74,15 +74,22 @@ function result() {
 		var name = customName.value; // Get the value from the customName input field and make name variable set to it.
 		newStory = newStory.replace(/Bob/g, name); // Replace 'Bob' in the story with the name variable
 	}
-	
+
 	/* STEP 11: If the metric radio button has been checked, we need to convert the temperature and mass numbers in the story */
   if(document.getElementById("metric").checked) {
-		// STEP 11a: Create a variable called weight and convert the 300lbs to kgs (1lb = 0.453592kg)
+		
+	// STEP 11a: Create a variable called weight and convert the 300lbs to kgs (1lb = 0.453592kg)
+		var weight = Math.round(300 * 0.453592); // Convert 300 pounds to kilograms with math.round to round to the nearest whole number
+		
 		// STEP 11b: Replace the string 300 pounds with the updated weight in kg
-
+		newStory = newStory.replace(/300 pounds/g, weight + ' kilograms');   // using replace() method to replace '300 pounds' with the weight variable
+		
+		
 		// STEP 12a: Create a variable called temp and convert °F to °C ... the formula for conversion is °C = (°F - 32) x 5/9
-
+		var temp = Math.round((94 - 32) * 5/9);     // Convert 94°F to Celsius with math.round to round to the nearest whole number
+		
 		// STEP 12b: Replace the string '94 fahrenheit' with the updated temperature in °C
+		newStory = newStory.replace(/94 fahrenheit/g, temp + ' centigrade');
 
   }
 	/* STEP 13: Make the textContent property of the story variable (which references the paragraph) equal to newStory */
