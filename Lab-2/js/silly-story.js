@@ -25,6 +25,11 @@ Area 51, Death Valley, Aruba
 spontaneously combusted, rapidly sublimated, evaporated instantly
 */
 
+// Arrays
+var insertX = ['Donald Trump', 'Jackie Chan', 'Santa Claus'];
+var insertY = ['Area 51', 'Death Valley', 'Aruba'];
+var insertZ = ['spontaneously combusted', 'rapidly sublimated', 'evaporated instantly'];
+
 // FUNCTIONS
 
 /* STEP 2: have a look at the following function - if you call 
