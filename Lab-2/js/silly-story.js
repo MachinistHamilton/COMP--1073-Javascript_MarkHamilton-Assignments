@@ -6,8 +6,11 @@
 - story for the paragraph that outputs the final story
 */
 
-// customName is the string the user enters in the input field
+// variable named "customName" for the name field, uses getElementById to grab the input element with id "customname"
 var customName = document.getElementById('customname');
+// variable with name "randomize" for the button, uses getElementById to grab the button element with id "randomize"
+var randomize = document.getElementById('randomize');
+
 
 /* STEP 3: Create the variable that contains the story string that will be modified - use var storyText to containt the following:
 'It was 94 farenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.'
