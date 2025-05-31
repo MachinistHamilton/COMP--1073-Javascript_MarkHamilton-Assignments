@@ -61,6 +61,14 @@ function result() {
 
 	/* STEP 9: Replace the three placeholders in the newStory string — :insertx:, :inserty:, and :insertz: — with the strings stored in xItem, yItem, and zItem. Each time, be sure to update the variable newStory (with +=). You might need to do one of the above replacements twice! */
 
+	// The replace() method is used to replace the first occurrence of a specified value in a string with another value.
+	// So newStory will be updated with the values of xItem, yItem, and zItem
+	// /g is a regular expression flag that stands for "global," meaning it will replace all occurrences of the specified value in the string.
+	newStory = newStory.replace(/:insertx:/g, xItem);
+	newStory = newStory.replace(/:inserty:/g, yItem);
+	newStory = newStory.replace(/:insertz:/g, zItem);
+
+
 	/* STEP 10: If the user has typed a name in the customName field, replace the name 'Bob' in the story with whatever they typed */
 	if(customName.value != '') {
 
