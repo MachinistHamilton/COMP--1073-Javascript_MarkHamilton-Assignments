@@ -41,6 +41,7 @@ function randomValueFromArray(array){
 /* STEP 6: Review the partially complete result() function below */
 function result() {
 	// STEP 7: Create a new variable called newStory and set it to the value of storyText - we don't want to overwrite the original story!
+	var newStory = storyText;
 
 	/* STEP 8: Use the randomValueFromArray() function to generate a value for each of three new variables - xItem, yItem, and zItem
 	Call up the function and for each variable, pass it the array from which to grab a random string - for example if insertW was an array of strings, I would type:
@@ -70,7 +71,26 @@ function result() {
 
 // EVENT LISTENERS
 /* STEP 5: Add a click event listener to the randomize variable so that when the button it represents is clicked, the result() function is run. */
+//  EVENT LISTENER AND PARTIAL FUNCTION DEFINITION
 
+randomize.addEventListener('click', result);
+
+function result() {
+
+  if(customName.value !== '') {
+    const name = customName.value;
+
+  }
+
+  if(document.getElementById("uk").checked) {
+    const weight = Math.round(300);
+    const temperature =  Math.round(94);
+
+  }
+
+  story.textContent = "";
+  story.style.visibility = 'visible';
+}
 
 // This lab based on the excellent assessment challenge at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Silly_story_generator
 
