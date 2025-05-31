@@ -93,34 +93,40 @@ function result() {
 
   }
 	/* STEP 13: Make the textContent property of the story variable (which references the paragraph) equal to newStory */
+	story.textContent = newStory;
+
 
 	// The following line makes the paragraph visible
 	story.style.visibility = 'visible';
-}
+
 
 // EVENT LISTENERS
 /* STEP 5: Add a click event listener to the randomize variable so that when the button it represents is clicked, the result() function is run. */
 //  EVENT LISTENER AND PARTIAL FUNCTION DEFINITION FROM MDN FOLLOW ALONG
 // https://github.com/mdn/learning-area/blob/main/javascript/introduction-to-js-1/assessment-start/raw-text.txt
 
-randomize.addEventListener('click', result);
 
-function result() {
+	if(customName.value !== '') {
+		var name = customName.value;
+		newStory = newStory.replace(/Bob/g, name); // Replace 'Bob' in the story with the name variable
 
-  if(customName.value !== '') {
-    const name = customName.value;
+	}
 
-  }
+	if(document.getElementById("imperial").checked) {
+		// If the imperial radio button is checked, convert the weight and temperature to imperial units
+   		var weight = Math.round(300);
+		// replace() method
+		newStory = newStory.replace(/300 kilograms/g, weight + ' pounds'); // Replace '300 kilograms' with the weight variable
+		// Convert the temperature from Celsius to Fahrenheit
+		var temperature =  Math.round(94);
+		//replace() method
+		newStory = newStory.replace(/94 centigrade/g, temperature + ' fahrenheit'); // Replace '94 centigrade' with the temperature variable
+	}
 
-  if(document.getElementById("imperial").checked) {
-    const weight = Math.round(300);
-    const temperature =  Math.round(94);
-
-  }
-
-  story.textContent = "";
-  story.style.visibility = 'visible';
+	story.textContent = "";
+	story.style.visibility = 'visible';
 }
+randomize.addEventListener('click', result);
 
 // This lab based on the excellent assessment challenge at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Silly_story_generator
 
