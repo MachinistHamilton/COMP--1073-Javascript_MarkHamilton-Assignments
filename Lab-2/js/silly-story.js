@@ -71,7 +71,8 @@ function result() {
 
 // EVENT LISTENERS
 /* STEP 5: Add a click event listener to the randomize variable so that when the button it represents is clicked, the result() function is run. */
-//  EVENT LISTENER AND PARTIAL FUNCTION DEFINITION
+//  EVENT LISTENER AND PARTIAL FUNCTION DEFINITION FROM MDN FOLLOW ALONG
+// https://github.com/mdn/learning-area/blob/main/javascript/introduction-to-js-1/assessment-start/raw-text.txt
 
 randomize.addEventListener('click', result);
 
@@ -81,8 +82,8 @@ function result() {
     const name = customName.value;
 
   }
-
-  if(document.getElementById("uk").checked) {
+  
+  if(document.getElementById("imperial").checked) {
     const weight = Math.round(300);
     const temperature =  Math.round(94);
 
