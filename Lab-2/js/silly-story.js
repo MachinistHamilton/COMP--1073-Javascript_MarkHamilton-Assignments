@@ -6,20 +6,26 @@
 - story for the paragraph that outputs the final story
 */
 
-// variable named "customName" for the name field, uses getElementById to grab the input element with id "customname"
+// variable named "customName" for the name field, uses getElementById to grab the 
+// input element with id "customname"
 var customName = document.getElementById('customname');
-// variable with name "randomize" for the button, uses getElementById to grab the button element with id "randomize"
+// variable with name "randomize" for the button, uses getElementById to 
+// grab the button element with id "randomize"
 var randomize = document.getElementById('randomize');
 
 
-/* STEP 3: Create the variable that contains the story string that will be modified - use var storyText to containt the following:
-'It was 94 farenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.'
+/* STEP 3: Create the variable that contains the story string that will be modified 
+- use var storyText to containt the following:
+'It was 94 farenheit outside, so :insertx: went for a walk. When they got to :inserty:, 
+they stared in horror for a few moments, then :insertz:.
+ Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, 
+ and it was a hot day.'
 */
 
-//step3
 var storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but he was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
 
-/* STEP 4: Create three arrays, insertX, insertY, and insertZ, assigning them the following array values respectively:
+/* STEP 4: Create three arrays, insertX, insertY, and insertZ, 
+assigning them the following array values respectively:
 Donald Trump, Jackie Chan, Santa Claus
 Area 51, Death Valley, Aruba
 spontaneously combusted, rapidly sublimated, evaporated instantly
@@ -40,12 +46,18 @@ function randomValueFromArray(array){
 
 /* STEP 6: Review the partially complete result() function below */
 function result() {
-	// STEP 7: Create a new variable called newStory and set it to the value of storyText - we don't want to overwrite the original story!
+	// STEP 7: Create a new variable called newStory and set it to the value of storyText
+	//  - we don't want to overwrite the original story!
 	var newStory = storyText;
 
 	/* STEP 8: Use the randomValueFromArray() function to generate a value for each of three new variables - xItem, yItem, and zItem
 	Call up the function and for each variable, pass it the array from which to grab a random string - for example if insertW was an array of strings, I would type:
-	var wItem = randomValueFromArray(insertW);
+	var wItem = randomValueFromArray(insertW);*/
+	var xItem = randomValueFromArray(insertX);
+	var yItem = randomValueFromArray(insertY);
+	var zItem = randomValueFromArray(insertZ);
+
+
 
 	/* STEP 9: Replace the three placeholders in the newStory string — :insertx:, :inserty:, and :insertz: — with the strings stored in xItem, yItem, and zItem. Each time, be sure to update the variable newStory (with +=). You might need to do one of the above replacements twice! */
 
@@ -82,7 +94,7 @@ function result() {
     const name = customName.value;
 
   }
-  
+
   if(document.getElementById("imperial").checked) {
     const weight = Math.round(300);
     const temperature =  Math.round(94);
