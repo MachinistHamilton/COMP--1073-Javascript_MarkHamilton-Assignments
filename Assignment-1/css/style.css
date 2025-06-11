@@ -47,3 +47,120 @@ main {
     background-color: #f3f705;
     border: 6px solid #f3f705;
 }
+/*-------------------- BUTTONS ---------------------------*/
+button {
+    /* Main circle button style */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+}
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+/* move controls container down to bottom*/
+.controls {
+    gap: 6px;
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+/*----------------------------   COLOR GROUPS  -----------------------------------*/
+/* --------------  Purple Container and Button*/
+.purple-container {
+    background-color: rgb(212, 5, 202);
+    width: 20%;
+    margin-right: 6px;
+    padding: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+#button1 {
+    background-color: rgb(212, 5, 202);
+    color: #e9e9e9;
+}
+
+
+
+/* --------------  Blue Container and Button */
+.blue-container {
+    background-color: rgb(0, 238, 255);
+    width: 20%;
+    margin-right: 6px;
+    padding: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+#button2 {
+    background-color: rgb(0, 238, 255);
+    color: #e9e9e9;
+}
+
+/* --------------  Green Container and Button */
+.green-container {
+    background-color: rgb(0, 255, 136);
+    width: 20%;
+    margin-right: 6px;
+    padding: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+#button3 {
+    background-color: rgb(0, 255, 136);
+    color: #e9e9e9;
+}
+
+/* --------------  Orange Container and Button */
+.orange-container {
+    background-color: rgb(255, 166, 0);
+    width: 20%;
+    margin-right: 6px;
+    padding: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+#button4 {
+    background-color: rgb(255, 166, 0);
+    color: #e9e9e9;
+}
+
+/* --------------  Pink Container and Button */
+.pink-container {
+    background-color: rgb(255, 0, 166);
+    width: 20%;
+    padding: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+#button5 {
+    background-color: rgb(255, 0, 166);
+    color: #e9e9e9;
+}
+
+/*-------------------------   CONTROLLS  -----------------------------*/
+/*  Suprise Button */
+#button6 {
+    background-color: rgb(255, 0, 0); /* Red */
+    color: #e9e9e9;
+}
+/* Playback Button  */
+#button7 {
+    background-color: rgb(20, 202, 50); /* Green 2 */
+    
+    color: #e9e9e9;
+}
