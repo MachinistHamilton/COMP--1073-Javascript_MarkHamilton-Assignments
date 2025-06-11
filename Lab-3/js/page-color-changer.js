@@ -14,3 +14,12 @@ redSlider.addEventListener('input', updateBackgroundColor);
 greenSlider.addEventListener('input', updateBackgroundColor);
 blueSlider.addEventListener('input', updateBackgroundColor);
 
+// function to update the background color
+function updateBackgroundColor() {
+    const r = redSlider.value;
+    const g = greenSlider.value;
+    const b = blueSlider.value;
+}
+
+// Optionally initialize background color
+updateBackgroundColor();
