@@ -84,6 +84,8 @@ playbackButton.addEventListener("click", () => {
 	// Clears the console
 	console.clear();
 
+	/* OUTPUT THE STORY VISUALLY HERE */
+
 	// Logs the selected parts of the story
 	console.log(selectedParts.join(" "));
 
@@ -100,6 +102,8 @@ surpriseButton.addEventListener("click", () => {
 	for (let i = 0; i < allStorySections.length; i++) {
 		selectedParts[i] = randomlyPick(allStorySections[i]);
 	}
+
+	/* OUTPUT THE STORY VISUALLY HERE */
 
 	// Logs the selected parts of the story
 	console.log(selectedParts.join(" "));
