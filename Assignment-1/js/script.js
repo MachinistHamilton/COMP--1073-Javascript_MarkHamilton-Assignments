@@ -68,3 +68,15 @@ function randomlyPick(storySection) {
 
 	return storyPart;
 }
+
+// Adds an event listener to the playback button
+playbackButton.addEventListener("click", () => {
+	// Clears the console
+	console.clear();
+
+	// Logs the selected parts of the story
+	console.log(selectedParts.join(" "));
+
+	// Resets the selected parts array
+	selectedParts = ["", "", "", "", ""];
+});
