@@ -18,3 +18,14 @@ const storySection4Vars = document.querySelectorAll(
 const storySection5Vars = document.querySelectorAll(
 	".pink-container > .grid-item"
 );
+
+const allStorySections = [
+	storySection1Vars,
+	storySection2Vars,
+	storySection3Vars,
+	storySection4Vars,
+	storySection5Vars,
+];
+
+// Buttons
+const storyBuilderButtons = document.querySelectorAll(".selectors > button");
