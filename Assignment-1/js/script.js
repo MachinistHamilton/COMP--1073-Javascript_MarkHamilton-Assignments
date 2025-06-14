@@ -1,3 +1,5 @@
+// VARIABLES //
+
 // Arrays of story parts
 const storySection1Vars = document.querySelectorAll(
 	".purple-container > .grid-item"
@@ -39,6 +41,25 @@ const surpriseButton = document.querySelector("#button6");
 // Playback Button
 const playbackButton = document.querySelector("#button7");
 
+//END OF VARIABLES //
+
+// FUNCTIONS //
+
+// Function randomly selects a story part from each section
+function randomlyPick(storySection) {
+	let storyPart =
+		storySection[Math.floor(Math.random() * storySection.length)]
+			.textContent;
+
+	console.log(storyPart);
+
+	return storyPart;
+}
+
+// END OF FUNCTIONS //
+
+// EVENT LISTENERS //
+
 // adds Event Listener to each button
 for (let i = 0; i < storyBuilderButtons.length; i++) {
 	// Checks if the storysection exists to assign the event listener
@@ -58,17 +79,6 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 	});
 }
 
-// Function randomly selects a story part from each section
-function randomlyPick(storySection) {
-	let storyPart =
-		storySection[Math.floor(Math.random() * storySection.length)]
-			.textContent;
-
-	console.log(storyPart);
-
-	return storyPart;
-}
-
 // Adds an event listener to the playback button
 playbackButton.addEventListener("click", () => {
 	// Clears the console
@@ -80,3 +90,5 @@ playbackButton.addEventListener("click", () => {
 	// Resets the selected parts array
 	selectedParts = ["", "", "", "", ""];
 });
+
+// END OF EVENT LISTENERS //
