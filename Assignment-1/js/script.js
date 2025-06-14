@@ -48,7 +48,7 @@ const playbackButton = document.querySelector("#button7");
 // Function randomly selects a story part from each section
 function randomlyPick(storySection) {
 	// Checks if the storySection is an array and has elements
-	if (!Array.isArray(storySection) || storySection.length === 0) {
+	if (storySection.length === 0) {
 		console.error("Invalid story section provided.");
 		return "";
 	}
@@ -110,6 +110,13 @@ playbackButton.addEventListener("click", () => {
 
 	// Resets the selected parts array
 	selectedParts = ["", "", "", "", ""];
+
+	for (let i = 0; i < allStorySections.length; i++) {
+		// Removes the 'selected' class from all elements in the section
+		allStorySections[i].forEach((element) => {
+			element.classList.remove("selected");
+		});
+	}
 });
 
 // Adds an event listener to the surprise button
