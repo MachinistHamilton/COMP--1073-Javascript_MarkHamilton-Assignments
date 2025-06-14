@@ -29,3 +29,13 @@ const allStorySections = [
 
 // Buttons
 const storyBuilderButtons = document.querySelectorAll(".selectors > button");
+
+for (let i = 0; i < storyBuilderButtons.length; i++) {
+	if (allStorySections[i] === undefined) {
+		console.error(`No story section found for button index ${i}`);
+		continue;
+	}
+	storyBuilderButtons[i].addEventListener("click", () => {
+		randomlyPick(allStorySections[i]);
+	});
+}
