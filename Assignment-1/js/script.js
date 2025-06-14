@@ -27,8 +27,14 @@ const allStorySections = [
 	storySection5Vars,
 ];
 
-// Buttons
+// Story Builder Buttons
 const storyBuilderButtons = document.querySelectorAll(".selectors > button");
+
+// Surprise Button
+const surpriseButton = document.querySelector("#button6");
+
+// Playback Button
+const playbackButton = document.querySelector("#button7");
 
 // adds Event Listener to each button
 for (let i = 0; i < storyBuilderButtons.length; i++) {
