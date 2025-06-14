@@ -47,10 +47,29 @@ const playbackButton = document.querySelector("#button7");
 
 // Function randomly selects a story part from each section
 function randomlyPick(storySection) {
-	let storyPart =
-		storySection[Math.floor(Math.random() * storySection.length)]
-			.textContent;
+	// Checks if the storySection is an array and has elements
+	if (!Array.isArray(storySection) || storySection.length === 0) {
+		console.error("Invalid story section provided.");
+		return "";
+	}
 
+	// Grabs a random element from the story section
+	let storyPartElement =
+		storySection[Math.floor(Math.random() * storySection.length)];
+
+	// Grabs the text content of the selected element
+	let storyPart = storyPartElement.textContent;
+
+	// Lets the user know which part was selected
+	storyPartElement.classList.add("selected");
+	// Removes the 'selected' class from all other elements in the section
+	for (let i = 0; i < storySection.length; i++) {
+		if (storySection[i] !== storyPartElement) {
+			storySection[i].classList.remove("selected");
+		}
+	}
+
+	// Logs the selected story part to the console
 	console.log(storyPart);
 
 	return storyPart;
