@@ -54,8 +54,11 @@ function randomlyPick(storySection) {
 	}
 
 	// Grabs a random element from the story section
-	let storyPartElement =
-		storySection[Math.floor(Math.random() * storySection.length)];
+	// Ensures that the selected element does not have the 'selected' class
+	do {
+		var storyPartElement =
+			storySection[Math.floor(Math.random() * storySection.length)];
+	} while (storyPartElement.classList.contains("selected"));
 
 	// Grabs the text content of the selected element
 	let storyPart = storyPartElement.textContent;
