@@ -91,4 +91,21 @@ playbackButton.addEventListener("click", () => {
 	selectedParts = ["", "", "", "", ""];
 });
 
+// Adds an event listener to the surprise button
+surpriseButton.addEventListener("click", () => {
+	// Clears the console
+	console.clear();
+
+	// Randomly selects a part from each story section
+	for (let i = 0; i < allStorySections.length; i++) {
+		selectedParts[i] = randomlyPick(allStorySections[i]);
+	}
+
+	// Logs the selected parts of the story
+	console.log(selectedParts.join(" "));
+
+	// Resets the selected parts array
+	selectedParts = ["", "", "", "", ""];
+});
+
 // END OF EVENT LISTENERS //
