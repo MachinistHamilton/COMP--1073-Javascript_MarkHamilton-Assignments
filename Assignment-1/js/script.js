@@ -1,6 +1,20 @@
-// Array of story parts
-const storyPart1 = ["The turkey", "Mom", "Dad", "The dog", "My teacher", "The elephant", "The cat"];
-const storyPart2 = ["sat on","ate", "danced with", "saw", "doesn't like", "kissed",];
-const storyPart3 = ["a funny", "a scary", "a goofy", "a slimy", "a barking", "a fat"];
-const storyPart4 = ["goat", "monkey", "fish", "cow", "frog", "bug", "worm"];
-const storyPart5 = ["on the moon", "on the chair", "in my spaghetti", "in my soup", "on the grass", "in my shoe"];
+// Arrays of story parts
+const storySection1Vars = document.querySelectorAll(
+	".purple-container > .grid-item"
+);
+
+const storySection2Vars = document.querySelectorAll(
+	".blue-container > .grid-item"
+);
+
+const storySection3Vars = document.querySelectorAll(
+	".green-container > .grid-item"
+);
+
+const storySection4Vars = document.querySelectorAll(
+	".orange-container > .grid-item"
+);
+
+const storySection5Vars = document.querySelectorAll(
+	".pink-container > .grid-item"
+);
