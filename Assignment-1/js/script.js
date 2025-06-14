@@ -40,3 +40,14 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 		randomlyPick(allStorySections[i]);
 	});
 }
+
+// Function randomly selects a story part from each section
+function randomlyPick(storySection) {
+	let storyPart =
+		storySection[Math.floor(Math.random() * storySection.length)]
+			.textContent;
+
+	console.log(storyPart);
+
+	return storyPart;
+}
