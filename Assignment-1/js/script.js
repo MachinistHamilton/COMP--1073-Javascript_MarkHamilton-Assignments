@@ -27,6 +27,9 @@ const allStorySections = [
 	storySection5Vars,
 ];
 
+// Array to hold the selected parts of the story
+let selectedParts = ["", "", "", "", ""];
+
 // Story Builder Buttons
 const storyBuilderButtons = document.querySelectorAll(".selectors > button");
 
@@ -38,12 +41,20 @@ const playbackButton = document.querySelector("#button7");
 
 // adds Event Listener to each button
 for (let i = 0; i < storyBuilderButtons.length; i++) {
+	// Checks if the storysection exists to assign the event listener
+	// If it doesn't exist, logs an error message
 	if (allStorySections[i] === undefined) {
 		console.error(`No story section found for button index ${i}`);
 		continue;
 	}
+
+	// Adds an event listener to each button
 	storyBuilderButtons[i].addEventListener("click", () => {
-		randomlyPick(allStorySections[i]);
+		// Gets a random part from the corresponding story section
+		const part = randomlyPick(allStorySections[i]);
+
+		// Updates the selectedParts array with the new part
+		selectedParts[i] = part;
 	});
 }
 
