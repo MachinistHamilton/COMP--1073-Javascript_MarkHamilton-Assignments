@@ -30,6 +30,7 @@ const allStorySections = [
 // Buttons
 const storyBuilderButtons = document.querySelectorAll(".selectors > button");
 
+// adds Event Listener to each button
 for (let i = 0; i < storyBuilderButtons.length; i++) {
 	if (allStorySections[i] === undefined) {
 		console.error(`No story section found for button index ${i}`);
