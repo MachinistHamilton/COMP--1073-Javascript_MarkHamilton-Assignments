@@ -1,144 +1,144 @@
-// VARIABLES //
-
+//-- VARIABLES --
 // Arrays of story parts
-const storySection1Vars = document.querySelectorAll(
-	".purple-container > .grid-item"
-);
+const storyPart1 = ["The turkey", "Mom", "Dad", "The dog", "My teacher", "The elephant", "The cat"];
+const storyPart2 = ["sat on", "ate", "danced with", "saw", "doesn't like", "kissed"];
+const storyPart3 = ["a funny", "a scary", "a goofy", "a slimy", "a barking", "a fat"];
+const storyPart4 = ["goat", "monkey", "fish", "cow", "frog", "bug", "worm"];
+const storyPart5 = ["on the moon", "on the chair", "in my spaghetti", "in my soup", "on the grass", "in my shoe"];
 
-const storySection2Vars = document.querySelectorAll(
-	".blue-container > .grid-item"
-);
+// Variable to keep track of the current index of each array
+let Part1_index = 0;
+let Part2_index = 0;
+let Part3_index = 0;
+let Part4_index = 0;
+let Part5_index = 0;
 
-const storySection3Vars = document.querySelectorAll(
-	".green-container > .grid-item"
-);
+// DOM elements to grab the story elements of the html document
+const storySection1Vars = document.querySelectorAll(".purple-container > .grid-item");
+const storySection2Vars = document.querySelectorAll(".blue-container > .grid-item");
+const storySection3Vars = document.querySelectorAll(".green-container > .grid-item");
+const storySection4Vars = document.querySelectorAll(".orange-container > .grid-item");
+const storySection5Vars = document.querySelectorAll(".pink-container > .grid-item");
 
-const storySection4Vars = document.querySelectorAll(
-	".orange-container > .grid-item"
-);
-
-const storySection5Vars = document.querySelectorAll(
-	".pink-container > .grid-item"
-);
-
+// Array to build the current story
 const allStorySections = [
-	storySection1Vars,
-	storySection2Vars,
-	storySection3Vars,
-	storySection4Vars,
-	storySection5Vars,
+    storySection1Vars,
+    storySection2Vars,
+    storySection3Vars,
+    storySection4Vars,
+    storySection5Vars
 ];
 
-// Array to hold the selected parts of the story
-let selectedParts = ["", "", "", "", ""];
-
-// Story Builder Buttons
-const storyBuilderButtons = document.querySelectorAll(".selectors > button");
-
-// Surprise Button
-const surpriseButton = document.querySelector("#button6");
-
-// Playback Button
-const playbackButton = document.querySelector("#button7");
-
-//END OF VARIABLES //
-
-// FUNCTIONS //
-
-// Function randomly selects a story part from each section
-function randomlyPick(storySection) {
-	// Checks if the storySection is an array and has elements
-	if (storySection.length === 0) {
-		console.error("Invalid story section provided.");
-		return "";
-	}
-
-	// Grabs a random element from the story section
-	// Ensures that the selected element does not have the 'selected' class
-	do {
-		var storyPartElement =
-			storySection[Math.floor(Math.random() * storySection.length)];
-	} while (storyPartElement.classList.contains("selected"));
-
-	// Grabs the text content of the selected element
-	let storyPart = storyPartElement.textContent;
-
-	// Lets the user know which part was selected
-	storyPartElement.classList.add("selected");
-	// Removes the 'selected' class from all other elements in the section
-	for (let i = 0; i < storySection.length; i++) {
-		if (storySection[i] !== storyPartElement) {
-			storySection[i].classList.remove("selected");
-		}
-	}
-
-	// Logs the selected story part to the console
-	console.log(storyPart);
-
-	return storyPart;
+// Helper to visually highlight selected item
+function highlightSelected(section, index) {
+    if (!section || section.length === 0) return;
+    section.forEach((element, idx) => {
+        if (idx === index) {
+            element.classList.add("selected");
+        } else {
+            element.classList.remove("selected");
+        }
+    });
 }
 
-// END OF FUNCTIONS //
-
-// EVENT LISTENERS //
-
-// adds Event Listener to each button
-for (let i = 0; i < storyBuilderButtons.length; i++) {
-	// Checks if the storysection exists to assign the event listener
-	// If it doesn't exist, logs an error message
-	if (allStorySections[i] === undefined) {
-		console.error(`No story section found for button index ${i}`);
-		continue;
-	}
-
-	// Adds an event listener to each button
-	storyBuilderButtons[i].addEventListener("click", () => {
-		// Gets a random part from the corresponding story section
-		const part = randomlyPick(allStorySections[i]);
-
-		// Updates the selectedParts array with the new part
-		selectedParts[i] = part;
-	});
-}
-
-// Adds an event listener to the playback button
-playbackButton.addEventListener("click", () => {
-	// Clears the console
-	console.clear();
-
-	/* OUTPUT THE STORY VISUALLY HERE */
-
-	// Logs the selected parts of the story
-	console.log(selectedParts.join(" "));
-
-	// Resets the selected parts array
-	selectedParts = ["", "", "", "", ""];
-
-	for (let i = 0; i < allStorySections.length; i++) {
-		// Removes the 'selected' class from all elements in the section
-		allStorySections[i].forEach((element) => {
-			element.classList.remove("selected");
-		});
-	}
+// ----- STORY PART BUTTONS -----
+// Event Listener for purple button and logic to cycle through storyPart1 array.
+document.getElementById("button1").addEventListener("click", function() {
+    // check if the current index is less than the length of the array
+    // If it is, log the current part and increment the index
+    // If your at the end of the array , reset the index to 0
+    if (Part1_index < storyPart1.length) {
+        console.log("debug-> storyPart1:" + storyPart1[Part1_index]);  // log the current part to console
+        // Highlight the selected part in the story section
+        highlightSelected(storySection1Vars, Part1_index);
+        // Increment the index to move to the next part
+        Part1_index++;
+    } else {
+        Part1_index = 0; // Reset index to 0 if at the end
+        console.log("debug-> storyPart1 reset:" + storyPart1[Part1_index]); // log the index value to console
+    }
 });
 
-// Adds an event listener to the surprise button
-surpriseButton.addEventListener("click", () => {
-	// Clears the console
-	console.clear();
-
-	// Randomly selects a part from each story section
-	for (let i = 0; i < allStorySections.length; i++) {
-		selectedParts[i] = randomlyPick(allStorySections[i]);
-	}
-
-	/* OUTPUT THE STORY VISUALLY HERE */
-
-	// Logs the selected parts of the story
-	console.log(selectedParts.join(" "));
-
-	// Resets the selected parts array
-	selectedParts = ["", "", "", "", ""];
+//----- Repeat for other buttons with their respective arrays
+// Event Listener blue button and logic to cycle through storyPart2 array.
+document.getElementById("button2").addEventListener("click", function() {
+    if (Part2_index < storyPart2.length) {
+        console.log("debug-> storyPart2:" + storyPart2[Part2_index]);
+        highlightSelected(storySection2Vars, Part2_index);
+        Part2_index++;
+    } else {
+        Part2_index = 0;
+        console.log("debug-> storyPart2 reset:" + storyPart2[Part2_index]);
+    }
 });
 
-// END OF EVENT LISTENERS //
+//----- Repeat
+// Event listener for green button and logic to cycle through storyPart3 array.
+document.getElementById("button3").addEventListener("click", function() {
+    if (Part3_index < storyPart3.length) {
+        console.log("debug-> storyPart3:" + storyPart3[Part3_index]);
+        highlightSelected(storySection3Vars, Part3_index);
+        Part3_index++;
+    } else {
+        Part3_index = 0;
+        console.log("debug-> storyPart3 reset:" + storyPart3[Part3_index]);
+    }
+});
+
+//----- Repeat
+// Event listener for orange button and logic to cycle through storyPart4 array.
+document.getElementById("button4").addEventListener("click", function() {
+    if (Part4_index < storyPart4.length) {
+        console.log("debug-> storyPart4:" + storyPart4[Part4_index]);
+        highlightSelected(storySection4Vars, Part4_index);
+        Part4_index++;
+    } else {
+        Part4_index = 0;
+        console.log("debug-> storyPart4 reset:" + storyPart4[Part4_index]);
+    }
+});
+
+//----- Repeat
+// Event Listener for red button and logic to cycle through storyPart5 array.
+document.getElementById("button5").addEventListener("click", function() {
+    if (Part5_index < storyPart5.length) {
+        console.log("debug-> storyPart5:" + storyPart5[Part5_index]);
+        highlightSelected(storySection5Vars, Part5_index);
+        Part5_index++;
+    } else {
+        Part5_index = 0;
+        console.log("debug-> storyPart5 reset:" + storyPart5[Part5_index]);
+    }
+});
+//----- end of story part buttons
+
+
+//----- Controll buttons -----
+// Playback button
+document.getElementById("button7").addEventListener("click", function () {
+    if (Part1_index > 0 && Part2_index > 0 && Part3_index > 0 && Part4_index > 0 && Part5_index > 0) {
+        const story = `${storyPart1[Part1_index - 1]} ${storyPart2[Part2_index - 1]} ${storyPart3[Part3_index - 1]} ${storyPart4[Part4_index - 1]} ${storyPart5[Part5_index - 1]}.`;
+        console.log("debug-> currentStory: " + story);
+    } else {
+        console.log("Please complete all parts of the story before generating.");
+    }
+});
+
+// Surprise button
+document.getElementById("button6").addEventListener("click", function () {
+    Part1_index = Math.floor(Math.random() * storyPart1.length) + 1;
+    Part2_index = Math.floor(Math.random() * storyPart2.length) + 1;
+    Part3_index = Math.floor(Math.random() * storyPart3.length) + 1;
+    Part4_index = Math.floor(Math.random() * storyPart4.length) + 1;
+    Part5_index = Math.floor(Math.random() * storyPart5.length) + 1;
+
+    highlightSelected(storySection1Vars, Part1_index - 1);
+    highlightSelected(storySection2Vars, Part2_index - 1);
+    highlightSelected(storySection3Vars, Part3_index - 1);
+    highlightSelected(storySection4Vars, Part4_index - 1);
+    highlightSelected(storySection5Vars, Part5_index - 1);
+
+    const randomStory = `${storyPart1[Part1_index - 1]} ${storyPart2[Part2_index - 1]} ${storyPart3[Part3_index - 1]} ${storyPart4[Part4_index - 1]} ${storyPart5[Part5_index - 1]}.`;
+    console.log("debug-> randomStory: " + randomStory);
+});
+//------ end of controll buttons
