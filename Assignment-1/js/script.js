@@ -75,11 +75,11 @@ document.getElementById("button7").addEventListener("click", function () {
 		Part4_index > 0 &&
 		Part5_index > 0
 	) {
-		const story = `${storyPart1[Part1_index - 1]} ${
-			storyPart2[Part2_index - 1]
-		} ${storyPart3[Part3_index - 1]} ${storyPart4[Part4_index - 1]} ${
-			storyPart5[Part5_index - 1]
-		}.`;
+		const story = `${storySection1Vars[Part1_index - 1].textContent} ${
+			storySection2Vars[Part2_index - 1].textContent
+		} ${storySection3Vars[Part3_index - 1].textContent} ${
+			storySection4Vars[Part4_index - 1].textContent
+		} ${storySection4Vars[Part5_index - 1].textContent}.`;
 		console.log("debug-> currentStory: " + story);
 	} else {
 		console.log(
@@ -90,11 +90,11 @@ document.getElementById("button7").addEventListener("click", function () {
 
 // Surprise button
 document.getElementById("button6").addEventListener("click", function () {
-	Part1_index = Math.floor(Math.random() * storyPart1.length) + 1;
-	Part2_index = Math.floor(Math.random() * storyPart2.length) + 1;
-	Part3_index = Math.floor(Math.random() * storyPart3.length) + 1;
-	Part4_index = Math.floor(Math.random() * storyPart4.length) + 1;
-	Part5_index = Math.floor(Math.random() * storyPart5.length) + 1;
+	Part1_index = Math.floor(Math.random() * storySection1Vars.length) + 1;
+	Part2_index = Math.floor(Math.random() * storySection2Vars.length) + 1;
+	Part3_index = Math.floor(Math.random() * storySection3Vars.length) + 1;
+	Part4_index = Math.floor(Math.random() * storySection4Vars.length) + 1;
+	Part5_index = Math.floor(Math.random() * storySection5Vars.length) + 1;
 
 	highlightSelected(storySection1Vars, Part1_index - 1);
 	highlightSelected(storySection2Vars, Part2_index - 1);
@@ -102,11 +102,11 @@ document.getElementById("button6").addEventListener("click", function () {
 	highlightSelected(storySection4Vars, Part4_index - 1);
 	highlightSelected(storySection5Vars, Part5_index - 1);
 
-	const randomStory = `${storyPart1[Part1_index - 1]} ${
-		storyPart2[Part2_index - 1]
-	} ${storyPart3[Part3_index - 1]} ${storyPart4[Part4_index - 1]} ${
-		storyPart5[Part5_index - 1]
-	}.`;
+	const randomStory = `${storySection1Vars[Part1_index - 1].textContent} ${
+		storySection2Vars[Part2_index - 1].textContent
+	} ${storySection3Vars[Part3_index - 1].textContent} ${
+		storySection4Vars[Part4_index - 1].textContent
+	} ${storySection4Vars[Part5_index - 1].textContent}.`;
 	console.log("debug-> randomStory: " + randomStory);
 });
 //------ end of controll buttons
