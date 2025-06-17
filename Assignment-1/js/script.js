@@ -1,11 +1,13 @@
 //-- VARIABLES --
 
-// Variable to keep track of the current index of each array
-let Part1_index = 0;
-let Part2_index = 0;
-let Part3_index = 0;
-let Part4_index = 0;
-let Part5_index = 0;
+// Object to keep track of the current index for each part of the story
+const partIndexes = {
+	Part1_index: 0,
+	Part2_index: 0,
+	Part3_index: 0,
+	Part4_index: 0,
+	Part5_index: 0,
+};
 
 // DOM elements to grab the story elements of the html document
 const storySection1Vars = document.querySelectorAll(
@@ -36,6 +38,15 @@ const allStorySections = [
 // Function that grabs all story buttons
 const storyBuilderButtons = document.querySelectorAll(".selectors > button");
 
+// Object to connect the sections with specific index variables
+const storyPartsConfig = [
+	{ section: storySection1Vars, indexName: "Part1_index" },
+	{ section: storySection2Vars, indexName: "Part2_index" },
+	{ section: storySection3Vars, indexName: "Part3_index" },
+	{ section: storySection4Vars, indexName: "Part4_index" },
+	{ section: storySection5Vars, indexName: "Part5_index" },
+];
+
 // Helper to visually highlight selected item
 function highlightSelected(section, index) {
 	if (!section || section.length === 0) return;
@@ -50,19 +61,29 @@ function highlightSelected(section, index) {
 
 // adds Event Listener to each button
 for (let i = 0; i < storyBuilderButtons.length; i++) {
-	// check if the current index is less than the length of the array
-	// If it is, log the current part and increment the index
-	// If your at the end of the array , reset the index to 0
-	if (Part1_index < storyPart1.length) {
-		console.log("debug-> storyPart1:" + storyPart1[Part1_index]); // log the current part to console
-		// Highlight the selected part in the story section
-		highlightSelected(storySection1Vars, Part1_index);
-		// Increment the index to move to the next part
-		Part1_index++;
-	} else {
-		Part1_index = 0; // Reset index to 0 if at the end
-		console.log("debug-> storyPart1 reset:" + storyPart1[Part1_index]); // log the index value to console
-	}
+	// Grabs the specific story part object based on the current index
+	const storyPart = storyPartsConfig[i];
+
+	storyBuilderButtons[i].addEventListener("click", function () {
+		// Grabs the index name variable from the storyPart object
+		const indexKey = storyPart.indexName;
+
+		// Grabs the current index from the partIndexes object using the indexKey
+		const currentIndex = partIndexes[indexKey];
+
+		// Highlights the selected item in the current story part
+		highlightSelected(storyPart.section, currentIndex);
+
+		// Logs the current story part to the console
+		console.log(
+			`debug-> ${indexKey}: ` +
+				storyPart.section[currentIndex].textContent
+		);
+
+		// Adds 1 to the current index, and wraps around if it exceeds the length of the section
+		// This allows the user to cycle through the story parts
+		partIndexes[indexKey] = (currentIndex + 1) % storyPart.section.length;
+	});
 }
 
 //----- Controll buttons -----
