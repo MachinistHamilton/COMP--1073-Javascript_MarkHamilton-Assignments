@@ -101,28 +101,73 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 //----- Controll buttons -----
 // Playback button
 document.getElementById("button7").addEventListener("click", function () {
-  // make sure every part has been selected at least once
-  const allDone = Object.values(partIndexes).every(idx => idx >= 0);
-  if (!allDone) {
+  // 1) use partIndexes instead of bare globals:
+  if (
+    partIndexes["Part1_index"] >= 0 &&
+    partIndexes["Part2_index"] >= 0 &&
+    partIndexes["Part3_index"] >= 0 &&
+    partIndexes["Part4_index"] >= 0 &&
+    partIndexes["Part5_index"] >= 0
+  ) {
+    // 2) pull from storySection5Vars for the fifth part:
+    const story = `${storySection1Vars[partIndexes["Part1_index"]].textContent} ${
+      storySection2Vars[partIndexes["Part2_index"]].textContent
+    } ${storySection3Vars[partIndexes["Part3_index"]].textContent} ${
+      storySection4Vars[partIndexes["Part4_index"]].textContent
+    } ${storySection5Vars[partIndexes["Part5_index"]].textContent}.`;
+    console.log("debug-> currentStory:", story);
+	showStoryModal(story);
+  } else {
     console.log("Please complete all parts of the story before generating.");
-    return;
   }
-
-  // build the story by looping your config
-  const storyText = storyPartsConfig
-    .map(({ section, indexName }) => section[ partIndexes[indexName] ].textContent)
-    .join(" ") + ".";
-  console.log("debug-> currentStory:", storyText);
 });
+
+
 // Surprise button
 document.getElementById("button6").addEventListener("click", function () {
-  // randomly pick an index for each part AND highlight it
-  storyPartsConfig.forEach(({ section, indexName }) => {
-    partIndexes[indexName] = Math.floor(Math.random() * section.length);
-    highlightSelected(section, partIndexes[indexName]);
-  });
+	partIndexes["Part1_index"] =
+		Math.floor(Math.random() * storySection1Vars.length) + 1;
+	partIndexes["Part2_index"] = Math.floor(Math.random() * storySection2Vars.length) + 1;
+	partIndexes["Part3_index"] = Math.floor(Math.random() * storySection3Vars.length) + 1;
+	partIndexes["Part4_index"] = Math.floor(Math.random() * storySection4Vars.length) + 1;
+	partIndexes["Part5_index"] = Math.floor(Math.random() * storySection5Vars.length) + 1;
 
-  // then reuse the playback logic to log it
-  document.getElementById("button7").click();
+	highlightSelected(storySection1Vars, partIndexes["Part1_index"] - 1);
+	highlightSelected(storySection2Vars, partIndexes["Part2_index"] - 1);
+	highlightSelected(storySection3Vars, partIndexes["Part3_index"] - 1);
+	highlightSelected(storySection4Vars, partIndexes["Part4_index"] - 1);
+	highlightSelected(storySection5Vars, partIndexes["Part5_index"] - 1);
+
+	const randomStory = `${
+		storySection1Vars[partIndexes["Part1_index"] - 1].textContent
+	} ${storySection2Vars[partIndexes["Part2_index"] - 1].textContent} ${
+		storySection3Vars[partIndexes["Part3_index"] - 1].textContent
+	} ${storySection4Vars[partIndexes["Part4_index"] - 1].textContent} ${
+		storySection5Vars[partIndexes["Part5_index"] - 1].textContent
+	}.`;
+	console.log("debug-> randomStory: " + randomStory);
+	showStoryModal(randomStory);
 });
 //------ end of controll buttons
+
+
+// -------- Modal popup to show the story --------
+const modal       = document.getElementById("story-modal");
+const storyTextEl = document.getElementById("story-text");
+const closeBtn    = document.querySelector(".modal-close");
+
+// helper to show any story string
+function showStoryModal(text) {
+  storyTextEl.textContent = text;
+  modal.style.display = "flex";  // flex centers it with our CSS
+}
+
+// close on × click
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// close if you click outside the .modal-content
+modal.addEventListener("click", e => {
+  if (e.target === modal) modal.style.display = "none";
+});
