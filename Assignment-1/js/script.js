@@ -69,7 +69,23 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 		const indexKey = storyPart.indexName;
 
 		// Grabs the current index from the partIndexes object using the indexKey
-		const currentIndex = partIndexes[indexKey];
+		let currentIndex = partIndexes[indexKey];
+
+		// Checks if an element in the current story part is selected
+		const isSelected = Array.from(storyPart.section).some((el) =>
+			el.classList.contains("selected")
+		);
+
+		// Adds 1 to the current index, and wraps around if it exceeds the length of the section
+		// This allows the user to cycle through the story parts
+		// Only updates the index if an item is selected
+		if (isSelected) {
+			partIndexes[indexKey] =
+				(currentIndex + 1) % storyPart.section.length;
+
+			// Updates the currentIndex variable with the new index from partIndexes
+			currentIndex = partIndexes[indexKey];
+		}
 
 		// Highlights the selected item in the current story part
 		highlightSelected(storyPart.section, currentIndex);
@@ -79,10 +95,6 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 			`debug-> ${indexKey}: ` +
 				storyPart.section[currentIndex].textContent
 		);
-
-		// Adds 1 to the current index, and wraps around if it exceeds the length of the section
-		// This allows the user to cycle through the story parts
-		partIndexes[indexKey] = (currentIndex + 1) % storyPart.section.length;
 	});
 }
 
