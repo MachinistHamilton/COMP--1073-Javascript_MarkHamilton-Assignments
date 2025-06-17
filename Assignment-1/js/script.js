@@ -101,48 +101,28 @@ for (let i = 0; i < storyBuilderButtons.length; i++) {
 //----- Controll buttons -----
 // Playback button
 document.getElementById("button7").addEventListener("click", function () {
-	if (
-		Part1_index > 0 &&
-		Part2_index > 0 &&
-		Part3_index > 0 &&
-		Part4_index > 0 &&
-		Part5_index > 0
-	) {
-		const story = `${storySection1Vars[Part1_index - 1].textContent} ${
-			storySection2Vars[Part2_index - 1].textContent
-		} ${storySection3Vars[Part3_index - 1].textContent} ${
-			storySection4Vars[Part4_index - 1].textContent
-		} ${storySection4Vars[Part5_index - 1].textContent}.`;
-		console.log("debug-> currentStory: " + story);
-	} else {
-		console.log(
-			"Please complete all parts of the story before generating."
-		);
-	}
-});
+  // make sure every part has been selected at least once
+  const allDone = Object.values(partIndexes).every(idx => idx >= 0);
+  if (!allDone) {
+    console.log("Please complete all parts of the story before generating.");
+    return;
+  }
 
+  // build the story by looping your config
+  const storyText = storyPartsConfig
+    .map(({ section, indexName }) => section[ partIndexes[indexName] ].textContent)
+    .join(" ") + ".";
+  console.log("debug-> currentStory:", storyText);
+});
 // Surprise button
 document.getElementById("button6").addEventListener("click", function () {
-	partIndexes["Part1_index"] =
-		Math.floor(Math.random() * storySection1Vars.length) + 1;
-	Part2_index = Math.floor(Math.random() * storySection2Vars.length) + 1;
-	Part3_index = Math.floor(Math.random() * storySection3Vars.length) + 1;
-	Part4_index = Math.floor(Math.random() * storySection4Vars.length) + 1;
-	Part5_index = Math.floor(Math.random() * storySection5Vars.length) + 1;
+  // randomly pick an index for each part AND highlight it
+  storyPartsConfig.forEach(({ section, indexName }) => {
+    partIndexes[indexName] = Math.floor(Math.random() * section.length);
+    highlightSelected(section, partIndexes[indexName]);
+  });
 
-	highlightSelected(storySection1Vars, partIndexes["Part1_index"] - 1);
-	highlightSelected(storySection2Vars, Part2_index - 1);
-	highlightSelected(storySection3Vars, Part3_index - 1);
-	highlightSelected(storySection4Vars, Part4_index - 1);
-	highlightSelected(storySection5Vars, Part5_index - 1);
-
-	const randomStory = `${
-		storySection1Vars[partIndexes["Part1_index"] - 1].textContent
-	} ${storySection2Vars[Part2_index - 1].textContent} ${
-		storySection3Vars[Part3_index - 1].textContent
-	} ${storySection4Vars[Part4_index - 1].textContent} ${
-		storySection4Vars[Part5_index - 1].textContent
-	}.`;
-	console.log("debug-> randomStory: " + randomStory);
+  // then reuse the playback logic to log it
+  document.getElementById("button7").click();
 });
 //------ end of controll buttons
