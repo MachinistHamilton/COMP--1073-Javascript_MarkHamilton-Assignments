@@ -1,2 +1,6 @@
-# COMP--1073-Javascript_MarkHamilton-Assignmets
-COMP--1073-Javascript Assignments for Mark Hamilton std#020055050
+COMP--1073-S25-30769
+Client Side JavaScript
+Assignment 1 - Group Project
+See n Say StoryMaker Emulation
+
+Group Members: Thomas Gouzecky, Dillon Jenkins, Mark Hamilton
