@@ -19,7 +19,8 @@ function updateBackgroundColor() {
     const r = redSlider.value;
     const g = greenSlider.value;
     const b = blueSlider.value;
+    // Set the body's background color using RGB values
+    body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
-// Optionally initialize background color
-updateBackgroundColor();
+
